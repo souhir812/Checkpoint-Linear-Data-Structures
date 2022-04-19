@@ -1,0 +1,34 @@
+Prob2Sol2
+ALGORITHM distinct elem
+VAR
+    arr1,arr2:ARRAY_OF_INTEGER[10];
+    sum,i,j:INTEGER;
+    hash:HASH_TABLE<INTEGER,INTEGER>
+BEGIN
+sum:=0
+  FOR i FROM 0 TO arr1.length-1 STEP 1  DO
+      hash.insert(arr1[i],1)
+  END_FOR
+  FOR j FROM 0 TO arr2.length-1 STEP 1  DO
+     IF (hash.lookup(arr2[j])=TRUE) THEN
+         hash.insert(arr2[j],2)
+      ELSE
+           hash.insert(arr2[j],1)
+     END_IF
+  END_FOR
+
+FOR k FROM 0 TO arr1.length-1 STEP 1  DO
+    IF (hash.get(arr1[k])=1) THEN
+        sum:=sum + arr1[k]
+    END_IF
+
+END_FOR
+FOR l FROM 0 TO arr2.length-1 STEP 1  DO
+    IF (hash.get(arr2[l])=1) THEN
+        sum:=sum + arr1[l]
+    END_IF
+
+END_FOR
+ Write(sum)
+
+END
